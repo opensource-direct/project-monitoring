@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Barang as ModelBarang;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
 class BarangController extends Controller
@@ -12,7 +11,6 @@ class BarangController extends Controller
     {
         $barang = ModelBarang::get();
         return view('barang.index', ['barang' => $barang]);
-        // dd($barang);
     }
 
     public function create()
