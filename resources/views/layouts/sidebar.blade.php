@@ -68,13 +68,13 @@
  
      <li class="nav-item">
          <a class="nav-link" href="#">
-             <i class="fas fa-fw fa-database"></i>
+             <i class="fas fa-fw fa-wrench"></i>
              <span>Settings</span></a>
      </li>
 
      <li class="nav-item" style="margin-top: -15px">
          <a class="nav-link" href="#">
-             <i class="fas fa-fw fa-bug"></i>
+             <i class="fas fa-fw fa-door-closed"></i>
              <span>Logout</span></a>
      </li>
 
