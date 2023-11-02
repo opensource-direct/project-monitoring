@@ -88,3 +88,5 @@ Step 9: Akses Aplikasi & Have fun!
 ## Record Overview Fitur Reminder
 
 https://user-images.githubusercontent.com/98740335/279990664-cd3b8dbc-6b97-4bed-9b67-596690f4a0b6.mp4
+
+Copyright &copy 2023 Asep Septiadi. All right reserved. Build with Love ❤️
