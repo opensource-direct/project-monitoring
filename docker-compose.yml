@@ -1,0 +1,21 @@
+version: "3.5"
+services:
+  postgres:
+    image: postgres:14
+    environment:
+      - POSTGRES_USER=recompose
+      - POSTGRES_PASSWORD=secret
+      - POSTGRES_DB=recompose
+      - PGDATA=/var/lib/postgresql/data
+    networks:
+      - testing_network
+    volumes:
+      - pgsqldata:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+
+networks:
+  testing_network:
+
+volumes:
+  pgsqldata:
