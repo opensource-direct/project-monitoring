@@ -62,7 +62,7 @@ yarn-error.log
 Step 6: Jalankan command dibawah ini
 
 ```
-$ git checkout develop
+$ git checkout v1.1
 ```
 
 Step 7: Jalankan command dibawah ini
