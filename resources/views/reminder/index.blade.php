@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
 @section('title','Data Reminder')
+@php
+use App\Lib\ReminderStatus;
+@endphp
 
 @section('contents')
 <div id="content-wrapper" class="d-flex flex-column">
@@ -33,7 +36,7 @@
                                     <td style="vertical-align: middle">{{ $item->reminder_title }}</td>
                                     <td style="vertical-align: middle">{{ $item->reminder_detail }}</td>
                                     <td style="vertical-align: middle">{{ $item->created_by }}</td>
-                                    @if ($item->status_notes == 1)
+                                    @if ($item->status_notes == ReminderStatus::OPEN->value)
                                         <td style="vertical-align: middle; background: #efffa1; color: black; text-align: center">Open</td>
                                     @else
                                         <td style="vertical-align: middle; background: #41d156; color: white; text-align: center">Close</td>
@@ -41,7 +44,7 @@
                                     <td style="vertical-align: middle">{{ $item->created_at }}</td>
                                     <td style="vertical-align: middle">
                                         <a href="{{ route('reminder.edit', $item->id) }}" class="btn btn-warning btn-sm">Edit</a>
-                                        @if ($item->status_notes == 1)
+                                        @if ($item->status_notes == ReminderStatus::OPEN->value)
                                             <a href="{{ route('reminder.close', $item->id) }}" class="btn btn-primary btn-sm">Close</a>
                                         @else
                                             <a href="{{ route('reminder.open', $item->id) }}" class="btn btn-info btn-sm">Open</a>

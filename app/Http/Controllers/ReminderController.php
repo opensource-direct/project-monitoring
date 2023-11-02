@@ -75,7 +75,7 @@ class ReminderController extends Controller
     public function close($id)
     {
         $data = [
-            'status_notes' => 0,
+            'status_notes' => ReminderStatus::CLOSE,
         ];
 
         ModelReminder::find($id)->update($data);
@@ -86,7 +86,7 @@ class ReminderController extends Controller
     public function open($id)
     {
         $data = [
-            'status_notes' => 1,
+            'status_notes' => ReminderStatus::OPEN,
         ];
 
         ModelReminder::find($id)->update($data);

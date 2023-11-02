@@ -18,7 +18,7 @@ return new class extends Migration
             $table->dropColumn('status_notes');
         });
         Schema::table('reminder', function (Blueprint $table) {
-            $table->string('status_notes')->default(ReminderStatus::PENDING->value);
+            $table->string('status_notes')->default(ReminderStatus::OPEN->value);
         });
     }
 
