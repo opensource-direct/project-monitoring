@@ -27,7 +27,7 @@ Step 4: Setup Nama Database pada file .env
 ```
 DB_DATABASE=trial_db_recomposejob
 DB_USERNAME=root
-DB_PASSWORD=
+DB_PASSWORD='zuhri'
 ```
 
 Step 5: Jalankan command dibawah ini
