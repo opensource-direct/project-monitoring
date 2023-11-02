@@ -7,3 +7,7 @@ Aplikasi untuk memaintain personal work in office dan dapat mencatat, catatan un
 Berikut fitur-fitur yang di update dan terbaru
 
 - Kelola Data Barang
+- Kelola Reminder (Module Task & Notes) :new:
+
+## Install App
+Untuk installasi App dapat dilakukan mengikuti step berikut :
