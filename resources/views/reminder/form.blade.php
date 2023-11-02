@@ -27,7 +27,11 @@
                     </div>
                     <div class="form-group">
                         <label for="status_notes">Status</label>
-                        <input type="text" class="form-control" id="status_notes" name="status_notes" value="{{ isset($reminder) ? $reminder->status_notes : '' }}">
+                        <select id="status_notes" name="status_notes" class="form-control">
+                            @foreach ($status_cases as $status_case)
+                            <option value="{{$status_case->value}}">{{ $status_case->name }}</option>
+                            @endforeach
+                        </select>
                     </div>
                 </div>
                 <div class="card-footer">

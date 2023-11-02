@@ -36,7 +36,7 @@
                                     @if ($item->status_notes == 1)
                                         <td style="vertical-align: middle; background: #efffa1; color: black; text-align: center">Open</td>
                                     @else
-                                    <td style="vertical-align: middle; background: #41d156; color: white; text-align: center">Close</td>
+                                        <td style="vertical-align: middle; background: #41d156; color: white; text-align: center">Close</td>
                                     @endif
                                     <td style="vertical-align: middle">{{ $item->created_at }}</td>
                                     <td style="vertical-align: middle">
@@ -44,7 +44,7 @@
                                         @if ($item->status_notes == 1)
                                             <a href="{{ route('reminder.close', $item->id) }}" class="btn btn-primary btn-sm">Close</a>
                                         @else
-                                            <a href="{{ route('reminder.open', $item->id) }}" class="btn btn-info btn-sm">Open</a> 
+                                            <a href="{{ route('reminder.open', $item->id) }}" class="btn btn-info btn-sm">Open</a>
                                         @endif
                                         <a href="{{ route('reminder.delete', $item->id) }}" class="btn btn-danger btn-sm">Hapus</a>
                                         <a href="{{ route('reminder.detail', $item->id) }}" class="btn btn-info btn-sm">Rekap</a>
@@ -54,7 +54,7 @@
                         @else
                             <tr>
                                 <td colspan="8" style="text-align: center">Tidak ada data terecord dalam database</td>
-                            </tr>  
+                            </tr>
                         @endif
                     </tbody>
                 </table>
