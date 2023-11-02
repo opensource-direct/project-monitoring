@@ -8,3 +8,6 @@ Berikut fitur-fitur yang di update dan terbaru
 
 - Kelola Data Barang
 - Kelola Reminder (Module Task & Notes) :new:
+
+## Install App
+Untuk installasi App dapat dilakukan mengikuti step berikut :
