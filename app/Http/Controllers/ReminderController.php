@@ -2,84 +2,92 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Reminder;
+use App\Models\Reminder as ModelReminder;
 use Illuminate\Http\Request;
 
 class ReminderController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        return view('reminder.index');
+        $reminder = ModelReminder::get();
+        return view('reminder.index', ['reminder' => $reminder]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+        return view('reminder.form'); 
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $data = [
+            'reminder_title' =>$request->reminder_title,
+            'reminder_detail' =>$request->reminder_detail,
+            'created_by' =>$request->created_by,
+            'status_notes' =>$request->status_notes,
+        ];
+
+        ModelReminder::create($data);
+
+        return redirect()->route('reminder');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Reminder  $reminder
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Reminder $reminder)
+    public function show()
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Reminder  $reminder
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Reminder $reminder)
+    public function edit($id)
+    {
+        $reminder = ModelReminder::find($id);
+        return view('reminder.form', ['reminder' => $reminder]);    
+    }
+
+    public function update(Request $request, $id)
+    {
+        $data = [
+            'reminder_title' =>$request->reminder_title,
+            'reminder_detail' =>$request->reminder_detail,
+            'created_by' =>$request->created_by,
+            'status_notes' =>$request->status_notes,
+        ];
+
+        ModelReminder::find($id)->update($data);
+
+        return redirect()->route('reminder');
+    }
+
+    public function destroy()
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Reminder  $reminder
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Reminder $reminder)
+    public function delete($id)
     {
-        //
+        ModelReminder::find($id)->delete();
+
+        return redirect()->route('reminder');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Reminder  $reminder
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Reminder $reminder)
+    public function close($id) 
     {
-        //
+        $data = [
+            'status_notes' => 0,
+        ];
+
+        ModelReminder::find($id)->update($data);
+
+        return redirect()->route('reminder');
+    }
+
+    public function open($id) 
+    {
+        $data = [
+            'status_notes' => 1,
+        ];
+
+        ModelReminder::find($id)->update($data);
+
+        return redirect()->route('reminder');
     }
 }
