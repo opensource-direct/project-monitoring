@@ -3,7 +3,7 @@
 @section('title', isset($reminder) ? 'Kelola Reminder' : 'Tambah Reminder')
 
 @section('contents')
-{{-- {{ dd($reminder->reminder_detail) }} --}}
+{{-- {{ dd($reminder) }} --}}
 <form action="{{ isset($reminder) ? route('reminder.update', $reminder->id) : route('reminder.store') }}" method="post">
     @csrf
     <div class="row">
@@ -32,7 +32,7 @@
                 </div>
                 <div class="card-footer">
                     <button style="submit" class="btn btn-primary mr-2">{{ isset($reminder) ? 'Update' : 'Simpan' }}</button>
-                    <a href="{{ route('reminder') }}" class="btn btn-secondary">Batalkan</a>
+                    <a href="{{ route('reminder.index') }}" class="btn btn-secondary">Batalkan</a>
                 </div>
             </div>
         </div>

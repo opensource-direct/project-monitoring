@@ -1,7 +1,7 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex" href="{{ route('dashboard') }}" style="margin-left: -10px">
+    <a class="sidebar-brand d-flex" href="#" style="margin-left: -10px">
         <div class="sidebar-brand-text mx-3">recomposejob</div>
     </a>
 
@@ -10,7 +10,7 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item active">
-        <a class="nav-link" href="{{ route('dashboard') }}">
+        <a class="nav-link" href="{{ route('administrator.index') }}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
     </li>
@@ -24,7 +24,7 @@
     </div>
 
     <li class="nav-item">
-        <a class="nav-link" href="{{ route('reminder') }}">
+        <a class="nav-link" href="{{ route('reminder.index') }}">
             <i class="fas fa-fw fa-bell"></i>
             <span>Reminder Task</span></a>
     </li>
