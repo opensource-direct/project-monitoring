@@ -32,7 +32,7 @@ class ReminderController extends Controller
 
         ModelReminder::create($data);
 
-        return redirect()->route('reminder');
+        return redirect()->route('reminder.index');
     }
 
     public function show()
@@ -57,7 +57,7 @@ class ReminderController extends Controller
 
         ModelReminder::find($id)->update($data);
 
-        return redirect()->route('reminder');
+        return redirect()->route('reminder.index');
     }
 
     public function destroy()
@@ -69,7 +69,7 @@ class ReminderController extends Controller
     {
         ModelReminder::find($id)->delete();
 
-        return redirect()->route('reminder');
+        return redirect()->route('reminder.index');
     }
 
     public function close($id)
@@ -80,7 +80,7 @@ class ReminderController extends Controller
 
         ModelReminder::find($id)->update($data);
 
-        return redirect()->route('reminder');
+        return redirect()->route('reminder.index');
     }
 
     public function open($id)
@@ -91,6 +91,6 @@ class ReminderController extends Controller
 
         ModelReminder::find($id)->update($data);
 
-        return redirect()->route('reminder');
+        return redirect()->route('reminder.index');
     }
 }

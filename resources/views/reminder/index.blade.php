@@ -24,7 +24,7 @@ use App\Lib\ReminderStatus;
                             <th style="width: 8%">Created by</th>
                             <th style="width: 8%">Status</th>
                             <th>Created at</th>
-                            <th style="width: 15%">Aksi</th>
+                            <th style="width: 12%">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -37,9 +37,9 @@ use App\Lib\ReminderStatus;
                                     <td style="vertical-align: middle">{{ $item->reminder_detail }}</td>
                                     <td style="vertical-align: middle">{{ $item->created_by }}</td>
                                     @if ($item->status_notes == ReminderStatus::OPEN->value)
-                                        <td style="vertical-align: middle; background: #efffa1; color: black; text-align: center">Open</td>
+                                        <td><label class="btn btn-outline-danger disabled">Checked Open</label></td>
                                     @else
-                                        <td style="vertical-align: middle; background: #41d156; color: white; text-align: center">Close</td>
+                                        <td><label class="btn btn-outline-success disabled">Checked Close</label></td>
                                     @endif
                                     <td style="vertical-align: middle">{{ $item->created_at }}</td>
                                     <td style="vertical-align: middle">
@@ -50,7 +50,6 @@ use App\Lib\ReminderStatus;
                                             <a href="{{ route('reminder.open', $item->id) }}" class="btn btn-info btn-sm">Open</a>
                                         @endif
                                         <a href="{{ route('reminder.delete', $item->id) }}" class="btn btn-danger btn-sm">Hapus</a>
-                                        <a href="{{ route('reminder.detail', $item->id) }}" class="btn btn-info btn-sm">Rekap</a>
                                     </td>
                                 </tr>
                             @endforeach
