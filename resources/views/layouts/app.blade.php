@@ -31,7 +31,12 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-        @include('layouts.sidebar')
+
+        @if(Auth::user()->role == 1)
+            @include('administrator.sidebar')
+        @elseif(Auth::user()->role == 2)
+            @include('staff.sidebar')
+        @endif
         <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->

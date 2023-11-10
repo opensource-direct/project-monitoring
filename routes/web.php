@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\HomeAdministratorController;
+use App\Http\Controllers\HomeStaffController;
 use App\Http\Controllers\ReminderController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Auth;
@@ -25,8 +26,8 @@ Route::get('/', function() {
 })->name('welcome');
 
 Route::prefix('administrator')->middleware(['auth', 'auth.administrator'])->group(function () {
-    //ini route khusus untuk operator
-    Route::get('dashboard', [HomeAdministratorController::class, 'index'])->name('administrator.index');
+    // ROUTE : ADMINISTRATOR
+    Route::get('home', [HomeAdministratorController::class, 'index'])->name('administrator.index');
 
     Route::resource('reminder', ReminderController::class);
     Route::get('close/{id}', [ReminderController::class, 'close'])->name('reminder.close');
@@ -35,6 +36,12 @@ Route::prefix('administrator')->middleware(['auth', 'auth.administrator'])->grou
     Route::post('update/{id}', [ReminderController::class, 'update'])->name('reminder.update');
 
     Route::resource('users', UsersController::class);
+});
+
+
+Route::prefix('staff')->middleware(['auth', 'auth.staff'])->group(function () {
+    // ROUTE : STAFF
+    Route::get('home', [HomeStaffController::class, 'index'])->name('staff.index');
 });
 
 Route::get('logout', function () {

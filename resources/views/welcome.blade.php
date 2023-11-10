@@ -124,7 +124,7 @@
 
               <div class="navbar-btn d-none d-sm-inline-block">
                     @auth
-                        <a href="{{ route('administrator.index') }}" class="ud-main-btn ud-login-btn">
+                        <a href="{{ Auth::user()->role === '1' ? route('administrator.index') : route('staff.index') }}" class="ud-main-btn ud-login-btn">
                             Go to Dashboard
                         </a>
                     @else

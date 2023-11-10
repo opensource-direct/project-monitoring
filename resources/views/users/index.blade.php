@@ -55,8 +55,12 @@
                                     <td style="vertical-align: middle">{{ $item->created_at }}</td>
                                     <td style="vertical-align: middle">
                                         <div style="flex-direction: column">
-                                            <a href="{{ route('reminder.edit', $item->id) }}" class="btn btn-primary btn-sm" style="width: 100%; box-shadow: 2px 2px 4px rgba(0.2, 0.2, 0.2, 0.2);">Preview</a>
-                                            <a href="{{ route('reminder.delete', $item->id) }}" class="btn btn-danger btn-sm mt-1" style="width: 100%; box-shadow: 2px 2px 4px rgba(0.2, 0.2, 0.2, 0.2);">Hapus</a>
+                                            <a href="{{ route('users.edit', $item->id) }}" class="btn btn-primary btn-sm" style="width: 100%; box-shadow: 2px 2px 4px rgba(0.2, 0.2, 0.2, 0.2);">Preview</a>
+                                            @if ($item->role === "1")
+                                                <a href="{{ route('reminder.delete', $item->id) }}" class="btn btn-danger btn-sm mt-1" style="width: 100%; box-shadow: 2px 2px 4px rgba(0.2, 0.2, 0.2, 0.2);">Hapus</a>
+                                            @elseif($item->role === "2")
+                                                Staff
+                                            @endif
                                         </div>
                                     </td>
                                 </tr>

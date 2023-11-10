@@ -44,6 +44,8 @@ class LoginController extends Controller
     {
         if ($user->role == '1') {
             return redirect()->route('administrator.index');
+        } else if ($user->role === '2') {
+            return redirect()->route('staff.index');
         } else {
             Auth::logout();
             return redirect()->route('login');
