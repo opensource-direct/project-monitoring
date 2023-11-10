@@ -1,8 +1,11 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex" href="{{ route('administrator.index') }}" style="margin-left: -10px">
-        <div class="sidebar-brand-text mx-3">recomposejob</div>
+    <a class="sidebar-brand d-flex" href="{{ route('administrator.index') }}" style="margin-top: -1px;">
+        <div style="flex-direction: column; margin-top: -6px">
+            <div style="font-size: 14px; ">recompose.job v1.2</div>
+            <div style="font-size: 10px; text-align: left">imagine your hope</div>
+        </div>
     </a>
 
     <!-- Divider -->

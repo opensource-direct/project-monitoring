@@ -26,7 +26,7 @@
                         @if($reminder->count() > 0)
                             <tr>
                                 <th style="width: 5%;">No.</th>
-                                <th style="width: 15%">Reminder Info</th>
+                                <th style="width: 15%">Reminder Highlight</th>
                                 <th>Detail Reminder</th>
                                 <th style="width: 8%">Created by</th>
                                 <th style="width: 10%">Project Name</th>
@@ -37,7 +37,7 @@
                         @else
                             <tr>
                                 <th style="width: 5%; border-left: 1pt solid #e7e5e5;">No.</th>
-                                <th style="width: 15%">Reminder Info</th>
+                                <th style="width: 15%">Highlight Reminder</th>
                                 <th>Detail Reminder</th>
                                 <th style="width: 8%">Created by</th>
                                 <th>Project Name</th>
