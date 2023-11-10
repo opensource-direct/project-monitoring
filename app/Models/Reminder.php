@@ -15,6 +15,7 @@ class Reminder extends Model
         'reminder_title',
         'reminder_detail',
         'created_by',
+        'project_name',
         'status_notes'
     ];
 }
