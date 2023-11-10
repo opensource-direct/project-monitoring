@@ -11,7 +11,18 @@ class ReminderController extends Controller
     public function index()
     {
         $reminder = ModelReminder::get();
-        return view('reminder.index', ['reminder' => $reminder]);
+
+        // FORMULA 1: TO GET PERCENTAGE OF REMINDER IS CLOSED
+        $totalDataReminder = ModelReminder::get()->count();
+        $totalReminderIsClosed = ModelReminder::where('status_notes', 0)->count();
+        $percentageReminderProgress = ($totalReminderIsClosed * 100 / $totalDataReminder);
+
+        $data = [
+            'reminder' => $reminder,
+            'percentage' => round($percentageReminderProgress),
+        ];
+
+        return view('reminder.index', $data);
     }
 
     public function create()
@@ -27,6 +38,7 @@ class ReminderController extends Controller
             'reminder_title',
             'reminder_detail',
             'created_by',
+            'project_name',
             'status_notes',
         ]);
 
@@ -52,6 +64,7 @@ class ReminderController extends Controller
             'reminder_title' =>$request->reminder_title,
             'reminder_detail' =>$request->reminder_detail,
             'created_by' =>$request->created_by,
+            'project_name' =>$request->project_name,
             'status_notes' =>$request->status_notes,
         ];
 

@@ -12,7 +12,7 @@ class HomeAdministratorController extends Controller
 
         $data = [
             'reminderCount' => $countReminder,
-        ];
+        ];       
 
         return view('administrator.index', ['data' => $data]);
     }

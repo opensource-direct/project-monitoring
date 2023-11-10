@@ -16,7 +16,7 @@ class Staff
      */
     public function handle(Request $request, Closure $next)
     {
-        if ($request->user()->role == '2') {
+        if ($request->user()->role === '2') {
             return $next($request);
         }
         abort(403, 'Akses khusus Staff');
