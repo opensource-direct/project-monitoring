@@ -43,7 +43,13 @@
                                 <tr>
                                     <td style="vertical-align: middle; text-align: center">{{ $no++ }}</td>
                                     <td style="vertical-align: middle">{{ $item->name }} ({{ $item->username  }})</td>
-                                    <td style="vertical-align: middle; text-align: center"><img src="{{ asset('sbadmin') }}/img/{{ $item->user_picture }}" alt="User Picture" width="50" style="border-radius: 50%; box-shadow: 2px 2px 4px rgba(0.2, 0.2, 0.2, 0.2);"></td>
+                                    <td style="vertical-align: middle; text-align: center">
+                                        @if ($item->user_picture === NULL)
+                                            <img src="{{ asset('sbadmin') }}/img/undraw_profile.svg" alt="User Picture" width="50" style="border-radius: 50%;">
+                                        @else
+                                            <img src="{{ asset('sbadmin') }}/img/{{ $item->user_picture }}" alt="User Picture" width="50" style="border-radius: 50%;">
+                                        @endif
+                                    </td>
                                     <td style="vertical-align: middle">{{ $item->email }}</td>
                                     <td style="vertical-align: middle">
                                         @if ($item->role === "1")
@@ -57,9 +63,9 @@
                                         <div style="flex-direction: column">
                                             <a href="{{ route('users.edit', $item->id) }}" class="btn btn-primary btn-sm" style="width: 100%; box-shadow: 2px 2px 4px rgba(0.2, 0.2, 0.2, 0.2);">Preview</a>
                                             @if ($item->role === "1")
-                                                <a href="{{ route('reminder.delete', $item->id) }}" class="btn btn-danger btn-sm mt-1" style="width: 100%; box-shadow: 2px 2px 4px rgba(0.2, 0.2, 0.2, 0.2);">Hapus</a>
+                                                {{-- NO ACTION FOR ADMINISTRATOR --}}
                                             @elseif($item->role === "2")
-                                                Staff
+                                                <a href="{{ route('reminder.delete', $item->id) }}" class="btn btn-danger btn-sm mt-1" style="width: 100%; box-shadow: 2px 2px 4px rgba(0.2, 0.2, 0.2, 0.2);">Hapus</a>
                                             @endif
                                         </div>
                                     </td>

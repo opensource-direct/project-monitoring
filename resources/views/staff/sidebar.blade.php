@@ -32,7 +32,7 @@
      </li>
 
      <li class="nav-item" style="margin-top: -15px">
-         <a class="nav-link" href="#">
+         <a class="nav-link" href="{{ route('logout') }}">
              <i class="fas fa-fw fa-door-closed"></i>
              <span>Logout</span></a>
      </li>
