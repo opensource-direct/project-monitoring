@@ -10,7 +10,18 @@ class ReminderController extends Controller
     public function index()
     {
         $reminder = ModelReminder::get();
-        return view('reminder.index', ['reminder' => $reminder]);
+
+        // FORMULA 1: TO GET PERCENTAGE OF REMINDER IS CLOSED
+        $totalDataReminder = ModelReminder::get()->count();
+        $totalReminderIsClosed = ModelReminder::where('status_notes', 0)->count();
+        $percentageReminderProgress = ($totalReminderIsClosed * 100 / $totalDataReminder);
+
+        $data = [
+            'reminder' => $reminder,
+            'percentage' => round($percentageReminderProgress),
+        ];
+
+        return view('reminder.index', $data);
     }
 
     public function create()
@@ -24,12 +35,13 @@ class ReminderController extends Controller
             'reminder_title' =>$request->reminder_title,
             'reminder_detail' =>$request->reminder_detail,
             'created_by' =>$request->created_by,
+            'project_name' =>$request->project_name,
             'status_notes' =>$request->status_notes,
         ];
 
         ModelReminder::create($data);
 
-        return redirect()->route('reminder');
+        return redirect()->route('reminder.index');
     }
 
     public function show()
@@ -49,12 +61,13 @@ class ReminderController extends Controller
             'reminder_title' =>$request->reminder_title,
             'reminder_detail' =>$request->reminder_detail,
             'created_by' =>$request->created_by,
+            'project_name' =>$request->project_name,
             'status_notes' =>$request->status_notes,
         ];
 
         ModelReminder::find($id)->update($data);
 
-        return redirect()->route('reminder');
+        return redirect()->route('reminder.index');
     }
 
     public function destroy()
@@ -66,7 +79,7 @@ class ReminderController extends Controller
     {
         ModelReminder::find($id)->delete();
 
-        return redirect()->route('reminder');
+        return redirect()->route('reminder.index');
     }
 
     public function close($id) 
@@ -77,7 +90,7 @@ class ReminderController extends Controller
 
         ModelReminder::find($id)->update($data);
 
-        return redirect()->route('reminder');
+        return redirect()->route('reminder.index');
     }
 
     public function open($id) 
@@ -88,6 +101,6 @@ class ReminderController extends Controller
 
         ModelReminder::find($id)->update($data);
 
-        return redirect()->route('reminder');
+        return redirect()->route('reminder.index');
     }
 }
