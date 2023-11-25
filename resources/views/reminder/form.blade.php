@@ -54,10 +54,9 @@
                             </span>
                         </div>
                         <select name="status_notes" id="status_notes" class="form-control" >
-                            <option value="1" {{ isset($reminder) ?  ($reminder->status_notes === 1 ? 'selected' : null) : null }}>Open
-                            </option>
-                            <option value="0" {{ isset($reminder) ?  ($reminder->status_notes === 0 ? 'selected' : null) : null }}>Close
-                            </option>
+                            @foreach ($status_cases as $status_case)
+                            <option value="{{$status_case->value}}">{{ $status_case->name }}</option>
+                            @endforeach
                           </select>
                         {{-- <input type="text" class="form-control" id="status_notes" name="status_notes" value="{{ isset($reminder) ? $reminder->status_notes : '' }}"> --}}
                     </div>

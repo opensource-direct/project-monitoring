@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
 @section('title','Data Reminder')
+@php
+use App\Lib\ReminderStatus;
+@endphp
 
 @section('contents')
 <div id="content-wrapper" class="d-flex flex-column">
@@ -57,7 +60,7 @@
                                     <td style="vertical-align: middle">{{ $item->reminder_detail }}</td>
                                     <td style="vertical-align: middle">{{ $item->created_by }}</td>
                                     <td style="vertical-align: middle">{{ $item->project_name }}</td>
-                                    @if ($item->status_notes == 1)
+                                    @if ($item->status_notes == ReminderStatus::OPEN->value)
                                         <td style="text-align: center; vertical-align: middle;"><label class="btn btn-danger btn-sm mt-2" style="box-shadow: 2px 2px 4px rgba(0.2, 0.2, 0.2, 0.2);">Open</label></td>
                                     @else
                                         <td style="text-align: center; vertical-align: middle;"><label class="btn btn-success btn-sm mt-2" style="box-shadow: 2px 2px 4px rgba(0.2, 0.2, 0.2, 0.2);">Closed</label></td>
@@ -66,7 +69,7 @@
                                     <td style="vertical-align: middle">
                                         <div style="flex-direction: column">
                                             <a href="{{ route('reminder.edit', $item->id) }}" class="btn btn-primary btn-sm" style="width: 100%; box-shadow: 2px 2px 4px rgba(0.2, 0.2, 0.2, 0.2);">Preview</a>
-                                            @if ($item->status_notes == 1)
+                                            @if ($item->status_notes == ReminderStatus::OPEN->value)
                                                 <a href="{{ route('reminder.close', $item->id) }}" class="btn btn-success btn-sm mt-1" style="width: 100%;">Close</a>
                                             @else
                                                 <a href="{{ route('reminder.open', $item->id) }}" class="btn btn-danger btn-sm mt-1" style="width: 100%; box-shadow: 2px 2px 4px rgba(0.2, 0.2, 0.2, 0.2);">Re-Open</a>

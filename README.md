@@ -20,7 +20,7 @@ $ git clone https://github.com/aspsptyd/recompose-job.git
 
 Step 2: Open Project dengan VScode kemudian copy file `.env.example` dan rename file menjadi `.env`
 
-Step 3: Buat Database di Local Database Server dengan nama `db_recomposejob`
+Step 3: Buat Database di Local Database Server dengan nama `db_recomposejob`. Jika sudah menginstall `docker-compose` maka cukup menjalankan perintah `docker-compose up -d` dan langsung ke step 5.
 
 Step 4: Setup Nama Database pada file .env
 

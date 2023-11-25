@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Reminder as ModelReminder;
+use App\Lib\ReminderStatus;
 use Illuminate\Http\Request;
 
 class ReminderController extends Controller
@@ -26,18 +27,20 @@ class ReminderController extends Controller
 
     public function create()
     {
-        return view('reminder.form'); 
+        return view('reminder.form', [
+            'status_cases' => ReminderStatus::cases(),
+        ]);
     }
 
     public function store(Request $request)
     {
-        $data = [
-            'reminder_title' =>$request->reminder_title,
-            'reminder_detail' =>$request->reminder_detail,
-            'created_by' =>$request->created_by,
-            'project_name' =>$request->project_name,
-            'status_notes' =>$request->status_notes,
-        ];
+        $data = $request->only([
+            'reminder_title',
+            'reminder_detail',
+            'created_by',
+            'project_name',
+            'status_notes',
+        ]);
 
         ModelReminder::create($data);
 
@@ -52,7 +55,7 @@ class ReminderController extends Controller
     public function edit($id)
     {
         $reminder = ModelReminder::find($id);
-        return view('reminder.form', ['reminder' => $reminder]);    
+        return view('reminder.form', ['reminder' => $reminder]);
     }
 
     public function update(Request $request, $id)
@@ -82,10 +85,10 @@ class ReminderController extends Controller
         return redirect()->route('reminder.index');
     }
 
-    public function close($id) 
+    public function close($id)
     {
         $data = [
-            'status_notes' => 0,
+            'status_notes' => ReminderStatus::CLOSE,
         ];
 
         ModelReminder::find($id)->update($data);
@@ -93,10 +96,10 @@ class ReminderController extends Controller
         return redirect()->route('reminder.index');
     }
 
-    public function open($id) 
+    public function open($id)
     {
         $data = [
-            'status_notes' => 1,
+            'status_notes' => ReminderStatus::OPEN,
         ];
 
         ModelReminder::find($id)->update($data);
